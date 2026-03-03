@@ -1,64 +1,64 @@
 import { CommonModule } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   input,
   model,
-  Signal,
+  output,
+  signal
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'nc-text',
   standalone: true,
-  imports: [CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './text.html',
-  styleUrls: ['./text.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: './text.css'
 })
 export class Text {
-  /** Two-way bindable value: [(value)]="..." */
+  // Inputs (Angular 17+ signal-based)
+  label = input<string>('Label');
+  placeholder = input<string>('');
+  hint = input<string>('');
+  errorMessage = input<string>('');
+  disabled = input<boolean>(false);
+  clearable = input<boolean>(true);
+  prefixIcon = input<string>('');  // 'search' | 'user' | 'mail' | ''
+  maxLength = input<number | null>(null);
+  inputId = input<string>('text-input-' + Math.random().toString(36).slice(2, 7));
+  required = input<boolean>(false);
+
+  // Two-way binding via model()
   value = model<string>('');
 
-  /** Inputs as signals (Angular v17+) */
-  label = input<string | null>(null);
-  hint = input<string | null>(null);
-  error = input<string | null>(null);
-  placeholder = input<string | null>(null);
+  // Outputs
+  valueChange = output<string>();
+  focused = output<void>();
+  blurred = output<void>();
 
-  variant = input<'filled' | 'outline'>('filled');
-  size = input<'sm' | 'md' | 'lg'>('md');
+  // Internal state
+  isFocused = signal(false);
+  hasValue = computed(() => !!this.value() && this.value().length > 0);
 
-  required = input(false);
-  disabled = input(false);
-  readonly = input(false);
-  maxlength = input<number | null>(null);
-
-  /** Basic validation: required */
-  showError: Signal<boolean> = computed(() => {
-    if (this.disabled()) return false;
-    if (this.error()) return true;
-    if (this.required()) {
-      return !this.value() || this.value().trim().length === 0;
-    }
-    return false;
-  });
-
-  errorText: Signal<string> = computed(() =>
-    this.error() ??
-    (this.required() && this.showError() ? 'This field is required.' : '')
-  );
-
-  /** Keep the model in sync on input */
-  onInput(v: string) {
-    this.value.set(v);
+  onFocus() {
+    this.isFocused.set(true);
+    this.focused.emit();
   }
 
-  // Example: side-effect/logging (optional)
-  constructor() {
-    effect(() => {
-      // console.log('UiText value:', this.value());
-    });
+  onBlur() {
+    this.isFocused.set(false);
+    this.blurred.emit();
+  }
+
+  onInput(event: Event) {
+    const val = (event.target as HTMLInputElement).value;
+    this.value.set(val);
+    this.valueChange.emit(val);
+  }
+
+  clearValue() {
+    this.value.set('');
+    this.valueChange.emit('');
   }
 }

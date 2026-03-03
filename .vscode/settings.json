@@ -37,6 +37,7 @@
     "Template.slnx": false,
     "Web.BlazorWasm": true,
     "web.server": true,
+    "web.vue": true,
   },
   "files.watcherExclude": {
     ".config": true,
