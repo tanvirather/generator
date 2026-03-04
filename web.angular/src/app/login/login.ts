@@ -28,6 +28,10 @@ export class Login {
     alert(`Hello, ${this.fullName()}! Your title is "${this.title()}" and value is "${this.value()}"`);
   }
 
+  onFirstNameChange(event: string) {
+    alert(`First name changed to: ${JSON.stringify(event)}`);
+  }
+
   reset() {
     this.firstName.set('');
     this.lastName.set('');

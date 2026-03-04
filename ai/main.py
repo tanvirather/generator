@@ -9,7 +9,10 @@ model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, tr
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, trust_remote_code=True)
 
 prompt = "Write a hello world program in c#"
+# prompt = "write a angular version 17 component for input type='text'"
 inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 outputs = model.generate(**inputs, max_length=128)
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
+with open("tmp/output.cs", "w") as file:
+    file.write(tokenizer.decode(outputs[0], skip_special_tokens=True))
