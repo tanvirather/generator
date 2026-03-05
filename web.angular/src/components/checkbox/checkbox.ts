@@ -2,14 +2,14 @@ import { Component, input, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'nc-text',
+  selector: 'nc-checkbox',
   imports: [FormsModule],
-  templateUrl: './text.html',
-  styleUrl: './text.css'
+  templateUrl: './checkbox.html',
+  styleUrl: './checkbox.css',
 })
-export class Text {
+export class Checkbox {
   label = input<string>('');
-  value = model<string>('');
+  value = model<boolean>(false);
   required = input<boolean>(false);
-  change = output<string>();
+  change = output<boolean>();
 }

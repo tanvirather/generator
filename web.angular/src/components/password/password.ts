@@ -2,12 +2,12 @@ import { Component, input, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'nc-text',
+  selector: 'nc-password',
   imports: [FormsModule],
-  templateUrl: './text.html',
-  styleUrl: './text.css'
+  templateUrl: './password.html',
+  styleUrl: './password.css',
 })
-export class Text {
+export class Password {
   label = input<string>('');
   value = model<string>('');
   required = input<boolean>(false);

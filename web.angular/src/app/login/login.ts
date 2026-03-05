@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, model, signal } from '@angular/core';
+import { Component, model, signal } from '@angular/core';
 import { Components } from '../../components';
 
 @Component({
@@ -10,22 +10,17 @@ import { Components } from '../../components';
 })
 export class Login {
 
+  model = model({
+    username: '',
+    password: '',
+    rememberMe: false,
+  });
   // Local state as signals
   firstName = signal('');
-  lastName = signal('');
-  title = signal('');
-  readonlyExample = signal('Static value');
   value = model<string>('');
 
-  fullName = computed(() => {
-    const f = this.firstName().trim();
-    const l = this.lastName().trim();
-    return [f, l].filter(Boolean).join(' ') || 'No name';
-    // Template reads fullName() and re-renders as dependencies change
-  });
-
   onSubmit() {
-    alert(`Hello, ${this.fullName()}! Your title is "${this.title()}" and value is "${this.value()}"`);
+    alert(`username = ${this.model().username}, password = ${this.model().password}, rememberMe = ${this.model().rememberMe}`);
   }
 
   onFirstNameChange(event: string) {
@@ -33,9 +28,12 @@ export class Login {
   }
 
   reset() {
+    this.model.set({
+      username: '',
+      password: '',
+      rememberMe: false,
+    });
     this.firstName.set('');
-    this.lastName.set('');
-    this.title.set('');
   }
 
 }
