@@ -19,12 +19,12 @@ export class TablePage {
   ];
 
   dataList = [
-    { id: 1, name: 'Alice Nguyen', email: 'alice@acme.io', role: 'Admin', status: 'Active' },
-    { id: 2, name: 'Bruno Silva', email: 'bruno@acme.io', role: 'Engineer', status: 'Active' },
-    { id: 3, name: 'Celine Dubois', email: 'celine@acme.io', role: 'Designer', status: 'Inactive' },
-    { id: 4, name: 'Daniel Park', email: 'dpark@acme.io', role: 'Engineer', status: 'Active' },
-    { id: 5, name: 'Elif Yilmaz', email: 'elif@acme.io', role: 'Manager', status: 'Active' },
-    { id: 6, name: 'Felix Okoye', email: 'felix@acme.io', role: 'Engineer', status: 'Active' },
-    { id: 7, name: 'Grace Kim', email: 'grace@acme.io', role: 'Designer', status: 'Inactive' },
+    { id: 1, name: 'Alice Nguyen', email: '<a href="mailto:alice@acme.io">alice@acme.io</a>', role: 'Admin', status: 'Active' },
+    { id: 2, name: 'Bruno Silva', email: '<a href="mailto:bruno@acme.io">bruno@acme.io</a>', role: 'Engineer', status: 'Active' },
+    { id: 3, name: 'Celine Dubois', email: '<a href="mailto:celine@acme.io">celine@acme.io</a>', role: 'Designer', status: 'Inactive' },
+    { id: 4, name: 'Daniel Park', email: '<a href="mailto:dpark@acme.io">dpark@acme.io</a>', role: 'Engineer', status: 'Active' },
+    { id: 5, name: 'Elif Yilmaz', email: '<a href="mailto:elif@acme.io">elif@acme.io</a>', role: 'Manager', status: 'Active' },
+    { id: 6, name: 'Felix Okoye', email: '<a href="mailto:felix@acme.io">felix@acme.io</a>', role: 'Engineer', status: 'Active' },
+    { id: 7, name: 'Grace Kim', email: '<a href="mailto:grace@acme.io">grace@acme.io</a>', role: 'Designer', status: 'Inactive' },
   ]
 }
