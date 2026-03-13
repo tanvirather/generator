@@ -6,7 +6,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of dataList">
-      <td *ngFor="let column of columns" [innerHTML]="data[column.key]"></td>
+      <td *ngFor="let col of columns">
+        <ng-container *ngIf="cellTemplates.get(col.key) as cellTpl else defaultCell">
+          <ng-container *ngTemplateOutlet="cellTpl, context: {$implicit: data[col.key]}" />
+        </ng-container>
+        <ng-template #defaultCell>{{data[col.key]}}</ng-template>
+      </td>
     </tr>
   </tbody>
 </table>

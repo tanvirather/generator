@@ -23,5 +23,5 @@ export class ColumnDefDirective {
   /** Optional: override just the header for this column */
   @Input() headerTpl?: TemplateRef<any>;
 
-  constructor(public readonly tpl: TemplateRef<{ $implicit: any; row: any }>) {}
+  constructor(public readonly tpl: TemplateRef<{ $implicit: any; row: any }>) { }
 }

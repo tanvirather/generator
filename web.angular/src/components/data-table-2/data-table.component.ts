@@ -28,7 +28,7 @@ export type SortDirection = 'asc' | 'desc' | null;
 @Component({
   selector: 'app-data-table',
   standalone: true,
-  imports: [CommonModule, FormsModule, ColumnDefDirective],
+  imports: [CommonModule, FormsModule],
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss'],
 })

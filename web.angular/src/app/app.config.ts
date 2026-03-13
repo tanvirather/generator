@@ -1,6 +1,5 @@
-import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter, withDebugTracing } from '@angular/router';
-
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -8,7 +7,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(
       routes,
-      ...(isDevMode() ? [withDebugTracing()] : []) // enable tracing only in dev mode
+      // ...(isDevMode() ? [withDebugTracing()] : []) // enable tracing only in dev mode
     ),
   ]
 };

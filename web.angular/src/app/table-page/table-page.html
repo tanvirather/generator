@@ -1,13 +1,9 @@
-<div class="table-page">
-  <nc-table [columns]="columns" [dataList]="dataList" />
-</div>
+<nc-table [columns]="columns" [dataList]="dataList">
+  <ng-template colTemplate="email" let-value><a href="mailto:{{value}}">{{value}}</a></ng-template>
+</nc-table>
 
-<br />
-<br />
-<br />
-
-<div class="table-page">
-  <nc-table2 [columns]="columns" [dataList]="dataList">
-
-  </nc-table2>
-</div>
+<nc-table [columns]="columns" [dataList]="dataList">
+  <ng-template colTemplate="email" let-value>
+    <a href="https://www.google.com" target="_blank">{{value}}</a>
+  </ng-template>
+</nc-table>

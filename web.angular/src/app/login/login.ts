@@ -24,6 +24,7 @@ export class Login {
 
   onSubmit() {
     this.router.navigateByUrl('/table-page');
+    // this.router.navigateByUrl('/data-table-page');
   }
 }
 

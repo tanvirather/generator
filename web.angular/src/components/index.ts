@@ -2,8 +2,8 @@ import { Button } from './button/button';
 import { Card } from './card/card';
 import { Checkbox } from './checkbox/checkbox';
 import { Password } from './password/password';
+import { ColTemplate } from './table/col-template';
 import { Table } from './table/table';
-import { Table2 } from './table2/table2';
 import { Text } from './text/text';
 
 export const Components = [
@@ -13,5 +13,5 @@ export const Components = [
   Password,
   Text,
   Table,
-  Table2
+  ColTemplate
 ];
