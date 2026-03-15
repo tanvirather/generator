@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ContentChildren, Input, QueryList, TemplateRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BaseStore } from '../../store';
 import { ColTemplate } from './col-template';
 import { TableColumn } from './tableColumn';
 @Component({
@@ -12,16 +13,19 @@ import { TableColumn } from './tableColumn';
 })
 export class Table {
   @Input() columns: TableColumn[] = [];
-  @Input() dataList: any[] = [];
-  visibleDataList: any[] = [];
-
+  @Input() store!: BaseStore;
   @ContentChildren(ColTemplate) tableTemplates!: QueryList<ColTemplate>;
   cellTemplates = new Map<string, TemplateRef<any>>();
   searchQuery: string = '';
+  visibleDataList: any[] = [];
+  private dataList: any[] = [];
 
-  ngAfterContentInit(): void {
+  async ngAfterContentInit(): Promise<void> {
     this.cellTemplates.clear();
     this.tableTemplates.forEach(item => this.cellTemplates.set(item.key, item.tpl));
+    if (this.store) {
+      this.dataList = await this.store.get() || [];
+    }
     this.visibleDataList = this.dataList;
   }
 

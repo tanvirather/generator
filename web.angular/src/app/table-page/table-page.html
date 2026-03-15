@@ -1,9 +1,5 @@
-<nc-table [columns]="columns" [dataList]="dataList">
-  <ng-template colTemplate="email" let-value><a href="mailto:{{value}}">{{value}}</a></ng-template>
-</nc-table>
+<nc-table [columns]="columns" [store]="tableStore">
+  <ng-template colTemplate="email" let-value><a href="https://www.google.com" target="_blank">{{value}}</a></ng-template>
+  <!-- <a *colTemplate="'email'; let value" href="https://www.google.com" target="_blank">{{ value }}</a> -->
 
-<nc-table [columns]="columns" [dataList]="dataList">
-  <ng-template colTemplate="email" let-value>
-    <a href="https://www.google.com" target="_blank">{{value}}</a>
-  </ng-template>
 </nc-table>

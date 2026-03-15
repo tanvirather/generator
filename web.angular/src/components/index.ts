@@ -2,6 +2,7 @@ import { Button } from './button/button';
 import { Card } from './card/card';
 import { Checkbox } from './checkbox/checkbox';
 import { Password } from './password/password';
+import { Select } from './select/select';
 import { ColTemplate } from './table/col-template';
 import { Table } from './table/table';
 import { Text } from './text/text';
@@ -11,7 +12,8 @@ export const Components = [
   Card,
   Checkbox,
   Password,
+  Select,
   Text,
   Table,
-  ColTemplate
+  ColTemplate,
 ];

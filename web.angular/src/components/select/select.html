@@ -1,0 +1,10 @@
+<div>
+  @if (label()) {
+    <label>{{ label() }}</label>
+  }
+  <select [(ngModel)]="value">
+    @for (option of options(); track option.value) {
+      <option [value]="option.value">{{ option.label }}</option>
+    }
+  </select>
+</div>

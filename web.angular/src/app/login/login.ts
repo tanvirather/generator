@@ -23,7 +23,8 @@ export class Login {
   value = model<string>('');
 
   onSubmit() {
-    this.router.navigateByUrl('/table-page');
+    this.router.navigateByUrl('/postgres-type');
+    // this.router.navigateByUrl('/table-page');
     // this.router.navigateByUrl('/data-table-page');
   }
 }
