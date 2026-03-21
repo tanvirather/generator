@@ -8,4 +8,5 @@ Migrations
 node_modules
 obj
 TestResults
+output
 tmp
