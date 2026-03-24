@@ -8,6 +8,8 @@ const router = createRouter({
       path: '/', component: () => import('../views/Index.vue'), meta: { requiresAuth: true },
       children: [
         { path: 'dashboard', component: () => import('../views/Dashboard.vue') },
+        { path: 'numericType/:id', component: () => import('../views/NumericType.vue') },
+        { path: '', redirect: 'dashboard' }
       ]
     },
     { path: '/:pathMatch(.*)*', redirect: '/' } // Catch-all route (must be LAST)

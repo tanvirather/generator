@@ -7,7 +7,10 @@
 
 <!-------------------------------------------------- template -------------------------------------------------->
 <template>
-  <h1>Index Layout</h1>
+  <nav>
+    <router-link to="/dashboard">Dashboard</router-link>
+    <router-link to="/numericType/019d1644-1abc-76ef-bba5-19d52d4275ec">NumericType</router-link>
+  </nav>
    <router-view />
 </template>
 

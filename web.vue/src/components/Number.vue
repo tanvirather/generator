@@ -6,8 +6,9 @@ const model = defineModel({ type: [String, Number], default: "" });
 const props = defineProps({
   id: { type: String, default: "" },
   label: { type: String, default: "" },
-  type: { type: String, default: "text" },
   disabled: { type: Boolean, default: false },
+  min: { type: Number, default: 0 },
+  max: { type: Number, default: 100 }
 });
 
 /************************************************** Emits **************************************************/
@@ -23,7 +24,7 @@ const computedId = computed(() => props.id || props.label.toLowerCase().replace(
 <template>
   <div class="ctrl">
     <label v-if="label" :for="computedId">{{ label }}</label>
-    <input :id="computedId" :type="type" :placeholder="label" :disabled="disabled" v-model="model" @blur="$emit('blur', $event)" />
+    <input :id="computedId" type="number" :min="min" :max="max" :placeholder="label" :disabled="disabled" v-model="model" @blur="$emit('blur', $event)" />
   </div>
 </template>
 
